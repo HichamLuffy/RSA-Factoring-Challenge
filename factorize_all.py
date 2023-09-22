@@ -10,8 +10,12 @@ def read_and_print_file(file_path):
                     if int(line) <= 1:
                         print(f"{n} is not factorizable (prime or 1)")
                     else:
-                        p, q = factorize_all(n) 
-                        print("{}={}*{}".format(n, q, p))
+                        factors = factorize_all(n)
+                        if factors:
+                            p, q = factors
+                            print("{}={}*{}".format(n, q, p))
+                        else:
+                            print(f"{n} is not factorizable")
     except FileNotFoundError:
         print(f"Error: File not found - {file_path}")
     except Exception as e:
