@@ -8,7 +8,7 @@ def read_and_print_file(file_path):
                 line = line.strip()
                 if line.isdigit():
                     i, j = factorize_all(int(line)) 
-                    print("{} = {} * {}".format(line, j, i))
+                    print("{}={}*{}".format(line, j, i))
                     #print(f"{line} = {factors}", end='\n')
     except FileNotFoundError:
         print(f"Error: File not found - {file_path}")
