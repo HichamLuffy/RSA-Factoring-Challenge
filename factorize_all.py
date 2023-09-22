@@ -14,11 +14,12 @@ def read_and_print_file(file_path):
         print(f"Error: File not found - {file_path}")
     except Exception as e:
         print(f"Error: {e}")
+    return None
 
 
 def factorize_all(line):
     try:
-        for i in range(2, 1000):
+        for i in range(2, line):
             if line % i == 0:
                 return i, line // i
                 #for j in range(2, i):
@@ -27,3 +28,4 @@ def factorize_all(line):
                 # print("{} = {} * {}".format(line, i, i)) 
     except Exception as e:
         print(f"Error: {e}")
+    return None
