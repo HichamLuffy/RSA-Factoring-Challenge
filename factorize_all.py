@@ -6,10 +6,12 @@ def read_and_print_file(file_path):
             for line in file:
                 line = line.strip()
                 if line.isdigit():
+                    n = int(line)
                     if int(line) <= 1:
-                        continue
-                    i, j = factorize_all(int(line)) 
-                    print("{}={}*{}".format(line, j, i))
+                        print(f"{n} is not factorizable (prime or 1)")
+                    else:
+                        p, q = factorize_all(n) 
+                        print("{}={}*{}".format(n, q, p))
     except FileNotFoundError:
         print(f"Error: File not found - {file_path}")
     except Exception as e:
