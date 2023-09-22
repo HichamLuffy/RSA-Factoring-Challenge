@@ -1,5 +1,4 @@
 #!/usr/bin/env /usr/bin/python3
-import sys
 
 def read_and_print_file(file_path):
     try:
