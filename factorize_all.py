@@ -1,8 +1,8 @@
 #!/usr/bin/env /usr/bin/python3
-from sys import argv
+
 def read_and_print_file(file_path):
     try:
-        with open(argv[1], 'r') as file:
+        with open(file_path, 'r') as file:
             for line in file:
                 line = line.strip()
                 if line.isdigit():
