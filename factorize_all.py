@@ -1,27 +1,35 @@
 #!/usr/bin/env /usr/bin/python3
-
+from sys import argv
 def read_and_print_file(file_path):
-    with open(file_path, 'r') as file:
-        for line in file:
-            line = line.strip()
-            if line.isdigit():
-                n = int(line)
-                if int(line) <= 1:
-                    print(f"{n} is not factorizable (prime or 1)")
-                else:
-                    factors = factorize_all(n)
-                    if factors:
-                        p, q = factors
-                        print("{}={}*{}".format(n, q, p))
+    try:
+        with open(argv[1], 'r') as file:
+            for line in file:
+                line = line.strip()
+                if line.isdigit():
+                    n = int(line)
+                    if int(line) <= 1:
+                        print(f"{n} is not factorizable (prime or 1)")
                     else:
-                        print(f"{n} is not factorizable")
-            else:
-                print(f"{line} is not a number")  
+                        factors = factorize_all(n)
+                        if factors:
+                            p, q = factors
+                            print("{}={}*{}".format(n, q, p))
+                        else:
+                            print(f"{n} is not factorizable")
+                else:
+                    print(f"{line} is not a number")
+    except FileNotFoundError:
+        print(f"Error: File not found - {file_path}")
+    except Exception as e:
+        print(f"Error: {e}")
     return None
 
 
 def factorize_all(line):
-    for i in range(2, line):
-        if line % i == 0:
-            return i, line // i 
+    try:
+        for i in range(2, line):
+            if line % i == 0:
+                return i, line // i 
+    except Exception as e:
+        print(f"Error: {e}")
     return None
