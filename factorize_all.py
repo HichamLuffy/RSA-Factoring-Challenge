@@ -1,5 +1,5 @@
 #!/usr/bin/env /usr/bin/python3
-
+import math
 def read_and_print_file(file_path):
     try:
         with open(file_path, 'r') as file:
@@ -26,10 +26,9 @@ def read_and_print_file(file_path):
 
 
 def factorize_all(line):
-    try:
-        for i in range(2, line):
+    if line % 2 == 0:
+        return 2, line // 2
+    else:
+        for i in range(3, int(math.sqrt(line)) + 1, 2):
             if line % i == 0:
-                return i, line // i 
-    except Exception as e:
-        print(f"Error: {e}")
-    return None
+                return i, line // i
