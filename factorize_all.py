@@ -1,5 +1,6 @@
 #!/usr/bin/env /usr/bin/python3
 import math
+import random
 def read_and_print_file(file_path):
     try:
         with open(file_path, 'r') as file:
@@ -30,6 +31,25 @@ def factorize_all(line):
         if line % 2 == 0:
             return 2, line // 2
         else:
-            for i in range(3, int(math.gcd(line)) + 1, 2):
+            for i in range(3, line, 2):
                 if line % i == 0:
-                    return i, line // i
+                    factor = pollard_rho(i)
+                    return factor, line // factor
+
+def pollard_rho(n):
+    x = random.randint(1, n - 1)
+    y = x
+    c = random.randint(1, n - 1)
+    d = 1
+    while d == 1:
+        x = (x * x + c) % n
+        y = (y * y + c) % n
+        y = (y * y + c) % n
+        d = gcd(abs(x - y), n)
+    return d
+
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
