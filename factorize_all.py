@@ -30,6 +30,6 @@ def factorize_all(line):
         if line % 2 == 0:
             return 2, line // 2
         else:
-            for i in range(3, int(math.sqrt(line)) + 1, 2):
+            for i in range(3, int(math.gcd(line)) + 1, 2):
                 if line % i == 0:
                     return i, line // i
