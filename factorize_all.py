@@ -10,13 +10,14 @@ def read_and_print_file(file_path):
                     n = int(line)
                     if int(line) <= 1:
                         print(f"{n} is not factorizable (prime or 1)")
-                    else:
+                    elif not is_prime(n):
                         factors = factorize_all(n)
-                        if factors:
-                            p, q = factors
-                            print("{}={}*{}".format(n, q, p))
-                        else:
-                            print(f"{n} is not factorizable")
+                    if factors:
+                            if len(factors) == 2:
+                                p, q = factors
+                                print("{}={}*{}".format(n, q, p))
+                    else:
+                        print(f"{n} is not factorizable")
                 else:
                     print(f"{line} is not a number")
     except FileNotFoundError:
@@ -53,3 +54,16 @@ def gcd(a, b):
     while b:
         a, b = b, a % b
     return a
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    for i in range(3, int(math.sqrt(num)) + 1, 2):
+        if num % i == 0:
+            return False
+    return True
