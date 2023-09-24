@@ -8,15 +8,12 @@ def read_and_print_file(file_path):
                 line = line.strip()
                 if line.isdigit():
                     n = int(line)
-                    if int(line) <= 1:
-                        print(f"{n} is not factorizable (prime or 1)")
+                    factors = factorize_all(n)
+                    if factors:
+                        p, q = factors
+                        print("{}={}*{}".format(n, q, p))
                     else:
-                        factors = factorize_all(n)
-                        if factors:
-                            p, q = factors
-                            print("{}={}*{}".format(n, q, p))
-                        else:
-                            print(f"{n} is not factorizable")
+                        print(f"{n} is not factorizable")
                 else:
                     print(f"{line} is not a number")
     except FileNotFoundError:
@@ -28,12 +25,13 @@ def read_and_print_file(file_path):
 
 def factorize_all(line):
     try:
-        if line % 2 == 0:
-            return 2, line // 2
-        else:
-            for i in range(3, math.gcd(line), 2):
-                if line % i == 0:
-                    return i, line // i
+        while line > 1:
+            if line % 2 == 0:
+                return 2, line // 2
+            else:
+                for i in range(3, math.gcd(line), 2):
+                    if line % i == 0:
+                        return i, line // i
         return None, None
     except Exception as e:
         print(f"Error: {e}")
