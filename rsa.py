@@ -18,6 +18,7 @@ def read_and_print_file(file_path):
                             print(f"{n} is not factorizable")
                 else:
                     print(f"{line} is not a number")
+                break
     except FileNotFoundError:
         print(f"Error: File not found - {file_path}")
     except Exception as e:
