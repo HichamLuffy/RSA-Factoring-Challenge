@@ -32,7 +32,7 @@ def factorize_all(line):
     if line % 2 == 0:
         return 2, line // 2
     else:
-        for i in range(3, line, 2):
+        for i in range(3, math.gcd(line), 2):
             if line % i == 0:
-                return i, line // i
+                    return i, line // i
     return None, None
