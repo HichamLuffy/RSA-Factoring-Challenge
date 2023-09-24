@@ -7,7 +7,7 @@ def factorize_all(line):
         print("{}={}*{}".format(line, line // 2, 2))
         return line // 2, 2
     else:
-        for i in range(3, line, 2):
+        for i in range(3, line // 2, 2):
             if line % i == 0:
                     print("{}={}*{}".format(line, line // i, i))
                     return line // i, i
