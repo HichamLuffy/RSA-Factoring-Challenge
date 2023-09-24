@@ -5,7 +5,7 @@ def read_and_print_file(file_path):
             for line in file:
                 line = line.strip()
                 if line.isdigit():
-                    n = int(line)
+                    n = line
                     if int(line) <= 1:
                         print(f"{n} is not factorizable (prime or 1)")
                     else:
@@ -28,9 +28,11 @@ def factorize_all(line):
     if line <= 1:
         return None, None
     if line % 2 == 0:
-        return 2, line // 2
+        print("{}={}*{}".format(line, line // 2, 2))
+        return
     else:
         for i in range(3, line, 2):
             if line % i == 0:
-                    return i, line // i
+                    print("{}={}*{}".format(line, line // i, i))
+                    return
     return None, None

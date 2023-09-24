@@ -1,11 +1,16 @@
 #!/usr/bin/env /usr/bin/python3
-from factorize_all import read_and_print_file
-import sys
+from factorize_all import factorize_all
+from sys import argv
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <file_path>")
-        sys.exit(1)
+    try:
+        with open(argv[1]) as file:
+            line = file.readline()
 
-    file_path = sys.argv[1]
-    read_and_print_file(file_path)
+            while line != "":
+                value = int(line.split('\n')[0])
+                factorize_all(value)    
+                line = file.readline()
+    except:
+        pass
+    
