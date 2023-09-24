@@ -1,5 +1,4 @@
 #!/usr/bin/env /usr/bin/python3
-import math
 def read_and_print_file(file_path):
     try:
         with open(file_path, 'r') as file:
@@ -31,7 +30,7 @@ def factorize_all(line):
     if line % 2 == 0:
         return 2, line // 2
     else:
-        for i in range(3, math.gcd(line), 2):
+        for i in range(3, line, 2):
             if line % i == 0:
                     return i, line // i
     return None, None
