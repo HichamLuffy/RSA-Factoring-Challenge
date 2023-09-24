@@ -27,13 +27,12 @@ def read_and_print_file(file_path):
 
 
 def factorize_all(line):
-    try:
-        while line > 1:
-            if line % 2 == 0:
-                return 2, line // 2
-            else:
-                for i in range(3, line, 2):
-                    if line % i == 0:
-                        return i, line // i
-    except Exception as e:
+    if line <= 1:
         return None, None
+    if line % 2 == 0:
+        return 2, line // 2
+    else:
+        for i in range(3, line, 2):
+            if line % i == 0:
+                return i, line // i
+    return None, None
