@@ -1,6 +1,7 @@
 #!/usr/bin/env /usr/bin/python3
 from factorize_all import factorize_all
 from sys import argv
+import time
 
 if __name__ == "__main__":
     try:
@@ -13,3 +14,16 @@ if __name__ == "__main__":
                 line = file.readline()
     except:
         pass
+
+    start_time = time.time()
+
+    for ln in line:
+        num = int(ln.strip())
+        factors = factorize_all(num)
+        if factors:
+            print(f"{num}={factors[0]}*{factors[1]}")
+
+
+        if time.time() - start_time > 5:
+            print("Time limit exceeded")
+            exit()

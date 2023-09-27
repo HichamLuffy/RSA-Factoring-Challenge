@@ -3,8 +3,12 @@
 def factorize_all(line):
     if line <= 1:
         return None, None
-    for i in range(2, int(line**0.5) + 1):
-        if line % i == 0:
-            print("{}={}*{}".format(line, line // i, i))
-            return
+    if line % 2 == 0:
+        print("{}={}*{}".format(line, line // 2, 2))
+        return line // 2, 2
+    else:
+        for i in range(2, int(line**0.5) + 1):
+            if line % i == 0:
+                print("{}={}*{}".format(line, line // i, i))
+                return line // i, i
     return None, None
